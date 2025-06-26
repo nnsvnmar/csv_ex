@@ -1,0 +1,27 @@
+language: ko
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer               # lookup 패턴을 토큰화할 때 활용
+  - name: LexicalSyntacticFeaturizer    # (선택)
+  - name: CountVectorsFeaturizer
+    analyzer: word
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 100
+    use_lookup_tables: true
+    entity_recognition: true
+  - name: EntitySynonymMapper
+  - name: RegexEntityExtractor          # lookup 테이블로 엔티티 바로 뽑기
+
+policies:
+- name: MemoizationPolicy
+- name: RulePolicy
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  batch_size: [32, 64]
+assistant_id: 20250625-164130-zesty-archway

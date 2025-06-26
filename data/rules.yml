@@ -1,0 +1,24 @@
+version: "3.1"
+
+rules:
+  - rule: Greet user
+    condition:
+      - active_loop: null
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Activate stock form
+    steps:
+      - intent: check_stock
+      - action: stock_form
+      - active_loop: stock_form
+
+  - rule: Submit stock form
+    condition:
+      - active_loop: stock_form
+    steps:
+      - action: stock_form      # 폼 제출
+      - active_loop: null       # 폼 종료
+      - action: action_check_stock
+      - action: utter_stock_count

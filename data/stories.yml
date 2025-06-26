@@ -1,0 +1,29 @@
+#version: "3.1"
+#stories:
+#  - story: 정상 재고 조회
+#    steps:
+#      - intent: greet
+#      - action: utter_greet
+#      - intent: check_stock
+#        entities:
+#          - product_name: "제품 A"
+#          - store_location: "강남점"
+#      - action: action_check_stock
+#      - action: utter_stock_count
+#  - story: 매장 미지정 예외
+#    steps:
+#      - intent: check_stock
+#        entities:
+#          - product_name: "제품 A"
+#      - action: utter_ask_store        # 슬롯 누락 시 물어보기
+#      - intent: check_stock
+#        entities:
+#          - product_name: "제품 A"
+#          - store_location: "강남점"
+#      - action: action_check_stock
+#      - action: utter_stock_count
+#      - intent: check_stock
+#        entities:
+#          - product_name: "제품 B"
+#      - action: utter_ask_store
+stories: []

@@ -1,0 +1,29 @@
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - 안녕
+      - 안녕하세요
+      - ㅎㅇ
+
+  - intent: check_stock
+    examples: |
+      - [제품 A](product_name) 재고 있어?
+      - [제품 B](product_name)의 [강남점](store_location) 재고
+      - [제품 C](product_name) [잠실점](store_location) 재고
+      - [연필](product_name)의 [잠실점](store_location) 재고 알려줘
+      - [샤프](product_name)는 [홍대점](store_location)에 재고 있어?
+      - [지우개](product_name)의 [강남점](store_location) 재고는?
+
+  - intent: goodbye
+    examples: |
+      - 끝낼래
+      - 그만할게
+
+  - lookup: product_name
+    examples: |
+      !include data/lookups/product_name.txt
+
+  - lookup: store_location
+    examples: |
+      !include data/lookups/store_location.txt

@@ -1,0 +1,46 @@
+version: "3.1"
+
+intents:
+  - greet
+  - check_stock
+  - goodbye
+
+entities:
+  - product_name
+  - store_location
+
+slots:
+  product_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: product_name
+  store_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: store_location
+  count:
+    type: float
+    mappings: []
+
+forms:
+  stock_form:
+    required_slots:
+      - product_name
+      - store_location
+
+responses:
+  utter_greet:
+    - text: "안녕하세요! 무엇을 도와드릴까요?"
+  utter_ask_product_name:
+    - text: "어떤 제품을 확인할까요?"
+  utter_ask_store_location:
+    - text: "어느 매장 재고를 확인할까요?"
+  utter_stock_count:
+    - text: "{store_location}에 {product_name}는 {count}개 남아 있어요."
+  utter_apology:
+    - text: "죄송합니다. {error_message}"
+
+actions:
+  - action_check_stock
